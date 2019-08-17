@@ -221,13 +221,8 @@
 <p>作为一个严谨的程序员（小白），我肯定。。。</p>
 <p>不去debug（反正你也看不完）</p>
 <p>20000多名言爬了20多分钟，不会多线程真是太惨了。</p>
-<p>最后再附上源码：</p>
-<p>import requests<br>from bs4 import BeautifulSoup<br>import json</p>
-<p>def main(num):<br>        if num == 1:<br>                url = ‘<a href="http://www.mrmy.net/mingrenmingyan/index.html&#39;" target="_blank" rel="noopener">http://www.mrmy.net/mingrenmingyan/index.html&#39;</a><br>        else:<br>                url = “<a href="http://www.mrmy.net/mingrenmingyan/&quot;" target="_blank" rel="noopener">http://www.mrmy.net/mingrenmingyan/&quot;</a> + str(num) + “.html”<br>        html = get(url)<br>        write(html)</p>
-<p>def get(url):<br>        try:<br>                response = requests.get(url)<br>                if response.status_code == 200:<br>                        return response.text<br>        except:<br>                return None</p>
-<p>def write(html):<br>        bs = BeautifulSoup(html,’lxml’)<br>        lis = bs.find(class_=”mylist lh26 f14”).find_all(‘li’)<br>        for li in lis:<br>        if str(li) != ‘<li class="bk20" style="border:none;"></li>‘:<br>                        text = li.text<br>                        with open(“mingyan.txt”,’a’,encoding=”UTF-8”) as f:<br>                                f.write(json.dumps(text,ensure_ascii=False) + ‘\n’)<br>                                f.close()<br>                        print(“写入&gt;&gt;&gt;” + text)</p>
-<p>for num in range(1,1065):<br>        print(“爬取第” + str(num) + “页”)<br>        main(num)</p>
-<p>我的能力还是太逊了，所以要继续好好学习才行啊！</p>
+<p>最后再附上源码：<br>…<br>……<br>我还不会搞hexo的代码高亮所以鸽了（咕咕咕）</p>
+<p>我还是太逊了，所以要继续好好学习才行啊！！！</p>
 
         </div>
         
@@ -235,7 +230,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-17T14:08:43.516Z" itemprop="dateUpdated">2019-08-17 22:08:43</time>
+    Last updated: <time datetime="2019-08-17T14:17:28.993Z" itemprop="dateUpdated">2019-08-17 22:17:28</time>
 </span><br>
 
 
