@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title><![CDATA[我居然爬了20000多条名人名言]]></title>
+      <url>/2019/08/17/%E6%88%91%E5%B1%85%E7%84%B6%E7%88%AC%E4%BA%8620000%E5%A4%9A%E6%9D%A1%E5%90%8D%E4%BA%BA%E5%90%8D%E8%A8%80/</url>
+      <content type="html"><![CDATA[<p>怎么这么闲啊</p>
+<a id="more"></a>
+
+<p>在一节普通的语文课，我们可爱的语文老师说：<br>“你们要多积累，就比如到名人名言网看看。”<br>我一查 哟还真有这网，<br>反正我闲着也是闲着，就爬下来练练手呗。(滑稽)</p>
+<p>下面有请受害者：<br><a href="http://www.mrmy.net/mingrenmingyan/" target="_blank" rel="noopener">http://www.mrmy.net/mingrenmingyan/</a></p>
+<p>哇居然有20000多条诶awa</p>
+<p>网站的名人名言存在了’li’标签里，就一句话，我也懒得费心思各种解析了，就直接一整句连作者套到一个字符串里面。</p>
+<p>鄙人刚刚学习爬虫，也就只用requests获取了源代码，然后用beautifulsoup解析好了后写入个TXT文件！？（太低端了哭）</p>
+<p>然后这个怪网站在第562页和第989页源码居然和其他页面大有不同？！爬下来了些怪东西。</p>
+<p>作为一个严谨的程序员（小白），我肯定。。。</p>
+<p>不去debug（反正你也看不完）</p>
+<p>20000多名言爬了20多分钟，不会多线程真是太惨了。</p>
+<p>最后再附上源码：</p>
+<p>import requests<br>from bs4 import BeautifulSoup<br>import json</p>
+<p>def main(num):<br>        if num == 1:<br>                url = ‘<a href="http://www.mrmy.net/mingrenmingyan/index.html&#39;" target="_blank" rel="noopener">http://www.mrmy.net/mingrenmingyan/index.html&#39;</a><br>        else:<br>                url = “<a href="http://www.mrmy.net/mingrenmingyan/&quot;" target="_blank" rel="noopener">http://www.mrmy.net/mingrenmingyan/&quot;</a> + str(num) + “.html”<br>        html = get(url)<br>        write(html)</p>
+<p>def get(url):<br>        try:<br>                response = requests.get(url)<br>                if response.status_code == 200:<br>                        return response.text<br>        except:<br>                return None</p>
+<p>def write(html):<br>        bs = BeautifulSoup(html,’lxml’)<br>        lis = bs.find(class_=”mylist lh26 f14”).find_all(‘li’)<br>        for li in lis:<br>        if str(li) != ‘<li class="bk20" style="border:none;"></li>‘:<br>                        text = li.text<br>                        with open(“mingyan.txt”,’a’,encoding=”UTF-8”) as f:<br>                                f.write(json.dumps(text,ensure_ascii=False) + ‘\n’)<br>                                f.close()<br>                        print(“写入&gt;&gt;&gt;” + text)</p>
+<p>for num in range(1,1065):<br>        print(“爬取第” + str(num) + “页”)<br>        main(num)</p>
+<p>我的能力还是太逊了，所以要继续好好学习才行啊！</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hello World]]></title>
       <url>/2019/08/10/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>

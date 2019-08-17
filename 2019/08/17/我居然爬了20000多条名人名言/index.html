@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     
     
-    <title>Jacky_Peng&#39;s Blog</title>
+    <title>我居然爬了20000多条名人名言 | Jacky_Peng&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content>
@@ -99,7 +99,7 @@
     <div class="scroll-wrap flex-col">
       <ul class="nav">
         
-            <li class=" active">
+            <li class="">
               <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 HOME
@@ -140,14 +140,13 @@
 </aside>
 
     <main id="main">
-        
-    <header class="top-header" id="header">
+        <header class="top-header" id="header">
     <div class="flex-row clearfix">
         <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Jacky_Peng&#39;s Blog</span>
+            <span>我居然爬了20000多条名人名言</span>
             
         </div>
         
@@ -157,13 +156,17 @@
         
     </div>
 </header>
-<header class="content-header index-header">
+<header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Jacky_Peng&#39;s Blog</h1>
+        <h1 class="title">我居然爬了20000多条名人名言</h1>
         <h5 class="subtitle">
             
-                
+                <time datetime="2019-08-17T13:36:17.000Z" itemprop="datePublished" class="page-time">
+  2019-08-17
+</time>
+
+
             
         </h5>
         
@@ -185,127 +188,134 @@
     <div id="local-search-result"></div>
 </div>
 
-    <div class="container body-wrap">
-        <ul class="post-list">
+
+<div class="container body-wrap">
+    <article id="post-我居然爬了20000多条名人名言"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">我居然爬了20000多条名人名言</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-17 21:36:17" datetime="2019-08-17T13:36:17.000Z"  itemprop="datePublished">2019-08-17</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>怎么这么闲啊</p>
+<a id="more"></a>
+
+<p>在一节普通的语文课，我们可爱的语文老师说：<br>“你们要多积累，就比如到名人名言网看看。”<br>我一查 哟还真有这网，<br>反正我闲着也是闲着，就爬下来练练手呗。(滑稽)</p>
+<p>下面有请受害者：<br><a href="http://www.mrmy.net/mingrenmingyan/" target="_blank" rel="noopener">http://www.mrmy.net/mingrenmingyan/</a></p>
+<p>哇居然有20000多条诶awa</p>
+<p>网站的名人名言存在了’li’标签里，就一句话，我也懒得费心思各种解析了，就直接一整句连作者套到一个字符串里面。</p>
+<p>鄙人刚刚学习爬虫，也就只用requests获取了源代码，然后用beautifulsoup解析好了后写入个TXT文件！？（太低端了哭）</p>
+<p>然后这个怪网站在第562页和第989页源码居然和其他页面大有不同？！爬下来了些怪东西。</p>
+<p>作为一个严谨的程序员（小白），我肯定。。。</p>
+<p>不去debug（反正你也看不完）</p>
+<p>20000多名言爬了20多分钟，不会多线程真是太惨了。</p>
+<p>最后再附上源码：</p>
+<p>import requests<br>from bs4 import BeautifulSoup<br>import json</p>
+<p>def main(num):<br>        if num == 1:<br>                url = ‘<a href="http://www.mrmy.net/mingrenmingyan/index.html&#39;" target="_blank" rel="noopener">http://www.mrmy.net/mingrenmingyan/index.html&#39;</a><br>        else:<br>                url = “<a href="http://www.mrmy.net/mingrenmingyan/&quot;" target="_blank" rel="noopener">http://www.mrmy.net/mingrenmingyan/&quot;</a> + str(num) + “.html”<br>        html = get(url)<br>        write(html)</p>
+<p>def get(url):<br>        try:<br>                response = requests.get(url)<br>                if response.status_code == 200:<br>                        return response.text<br>        except:<br>                return None</p>
+<p>def write(html):<br>        bs = BeautifulSoup(html,’lxml’)<br>        lis = bs.find(class_=”mylist lh26 f14”).find_all(‘li’)<br>        for li in lis:<br>        if str(li) != ‘<li class="bk20" style="border:none;"></li>‘:<br>                        text = li.text<br>                        with open(“mingyan.txt”,’a’,encoding=”UTF-8”) as f:<br>                                f.write(json.dumps(text,ensure_ascii=False) + ‘\n’)<br>                                f.close()<br>                        print(“写入&gt;&gt;&gt;” + text)</p>
+<p>for num in range(1,1065):<br>        print(“爬取第” + str(num) + “页”)<br>        main(num)</p>
+<p>我的能力还是太逊了，所以要继续好好学习才行啊！</p>
+
+        </div>
         
-            <li class="post-list-item fade">
-                <article id="post-我居然爬了20000多条名人名言"
-  class="article-card article-type-post" itemprop="blogPost">
-  
+<blockquote class="post-copyright">
+    <div class="content">
         
-<div class="item-thumb">
-    <a class="thumb-link" href="/2019/08/17/我居然爬了20000多条名人名言/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-17T14:08:43.516Z" itemprop="dateUpdated">2019-08-17 22:08:43</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/08/17/我居然爬了20000多条名人名言/" target="_blank" rel="external">http://yoursite.com/2019/08/17/我居然爬了20000多条名人名言/</a>
+        
     </div>
-    <img src="/img/thumb/2.jpg" alt="图片路径不正确">
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/head.jpg" alt="Jacky_Peng">
+            Jacky_Peng
+        </a>
+    </footer>
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
     
 
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/08/17/我居然爬了20000多条名人名言/&title=《我居然爬了20000多条名人名言》 — Jacky_Peng's Blog&pic=http://yoursite.com/img/head.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/08/17/我居然爬了20000多条名人名言/&title=《我居然爬了20000多条名人名言》 — Jacky_Peng's Blog&source=怎么这么闲啊" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2019/08/17/我居然爬了20000多条名人名言/">我居然爬了20000多条名人名言</a>
-    </h3>
-  
 
 
-
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
 
+        </div>
         
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2019-08-17 21:36:17" datetime="2019-08-17T13:36:17.000Z"  itemprop="datePublished">2019-08-17</time>
-
-        
+            
 
 
-        
-
-        
-
-
-        
         
     </div>
     
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        <p>怎么这么闲啊</p>
-    
-    <a href="/2019/08/17/我居然爬了20000多条名人名言/" class="post-more waves-effect waves-button">
-        more
-    </a>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/08/10/hello-world/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hello World</h4>
+      </a>
     </div>
+  
+</nav>
+
+
+    
+    
 </article>
 
 
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-hello-world"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-        
-<div class="item-thumb">
-    <a class="thumb-link" href="/2019/08/10/hello-world/"></a>
-    <div class="thumb-hover">
-        <span class="icon icon-eye"></span>
-    </div>
-    <img src="/img/thumb/1.jpg" alt="图片路径不正确">
-    
-
-
-  
-    <h3 class="post-title ab-title" itemprop="name">
-      <a class="post-title-link" href="/2019/08/10/hello-world/">Hello World</a>
-    </h3>
-  
-
-
-
 </div>
-
-        
-    
-    
-    
-    <div class="post-meta">
-        <time class="post-time" title="2019-08-10 23:34:57" datetime="2019-08-10T15:34:57.815Z"  itemprop="datePublished">2019-08-10</time>
-
-        
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
-    
-    <a href="/2019/08/10/hello-world/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-
-            </li>
-        
-        </ul>
-        
-    </div>
 
     </main>
     <footer class="footer ">
@@ -367,7 +377,7 @@ Qu...
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/&title=Jacky_Peng's Blog&pic=http://yoursite.com/img/head.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/08/17/我居然爬了20000多条名人名言/&title=《我居然爬了20000多条名人名言》 — Jacky_Peng's Blog&pic=http://yoursite.com/img/head.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -379,7 +389,7 @@ Qu...
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/&title=Jacky_Peng's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/08/17/我居然爬了20000多条名人名言/&title=《我居然爬了20000多条名人名言》 — Jacky_Peng's Blog&source=怎么这么闲啊" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -391,7 +401,7 @@ Qu...
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABW0lEQVR42u3aQQ7DIAxE0dz/0qnUVaUUMjNOF7W/VxVKw8sCMIbjkON8x6r9M/T/PhCwYDVindu4PqO0XNv1vmDBmszaD2y9S/33jQEWLFjC6/QFGBYsWL9muV3CggVrz1KSZmWy0JPvx3J5WLBasCrLbSVRfri+BQvW37JOM9xlOwtYsKax9CLRfhRXtrhGBgELVlPWSpptSvVk+qYvWLBgRUWiynWEL++BBQuW0KUy1BXWsgUWrGEsN2nOQNJRij67wILVlKUUZCvLuVJsks5gYcFqyqqUbt0jE2PqgQVrMMu9fJAdcCqTCCxY01jZQUi2uS2d/MCC1ZpVuXCQlWul1BwWrGGsLOXdd6kv5PVEHBasTqxsUtDTZXcqgQVrMisr/WTbVOkZWLBgyYPcPcMxMgVYsGA9tL1Uik3Lz4AFayQrS5rd1NmYE2DBGsbKrgtkxFI1CxasnqwXXY7FbVPN83MAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACwElEQVR42u3a0W4bMQwEQP//T7dA3wo0511SclJg7smI7TuNAog0ydcrvn79ub76S/Lu85U8Pfnk8MLDw8MbLf35wc/LTZbSfmuzZXh4eHif4T0Hg+Tx+SGeb2iy3W8seHh4eN/Ka4/p5OifpdR4eHh4/wsvv2megp9KuPHw8PA+z2sT3DZ45PfJU+rDtRY8PDy8eb/plafX3/X6Yn8PDw8Pb9FV3xzibZHi1AjCX0/Bw8PDu8DLU+G2Jdam5pv7vwkbeHh4eEd5yRfyn/1Ji2vTSGsbZnh4eHif4bXhIW9infp88hoPDw/vM7zN4d5uQV6ifX5WVGvBw8PDO8rLi637lthsgKAdSij2AA8PD2/EywPDpi+fb0oSBpIggYeHh3eb17a78mVtxhHyMYUv74OHh4d3jZcHic3Sk/u84isaR8DDw8O7wMvbUftFJ0d5u+jiX4KHh4d3mff80bxwkJQk8lJyUZlu9xsPDw9vxNu3r2YtrlnpdpaI4+Hh4e15szCwLxzkafeslPyPmTI8PDy8o7z92NOskJEHpGGij4eHh3eB1w4Q5KltEjyShc7GtobzEXh4eHijAYL2wZtDPB9HmKXgeHh4eLd5G0wSVPLFzYoRxe8GPDw8vAUvOljjssKsGDELA1GhBA8PD+8aLzmm8/R3f6zn948KuHh4eHjXeO0oQLus/SBCvWV4eHh4F3j7VLgdL0iWvt84PDw8vHu89ud9vgUtbPbum+CBh4eHd5nX/vhPBqTyA30T2aKIh4eHh3eI1x64eSNqVrTdJPTJKAMeHh7eKV4bDNpxq3yzNgWLqIyLh4eHd5R3Y9g0L2S0gwsJGw8PD+8n8PKm/qYY0a5tOHqFh4eH90FePiJwKpxsir94eHh493j75lNekpiVPPJyMB4eHt5tXtsAa9tXbdjIx7lmg1l4eHh4C95vQsqnrJ0YHwwAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
